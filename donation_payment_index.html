@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Donation Form</title>
+</head>
+<body>
+    <section class="donation-form">
+        <div class="progress-section">
+            <p>of <span class="goal-amount">$750,000</span> raised <span class="raised-amount">$244,024</span></p>
+            <div class="progress-bar">
+                <div class="progress" style="width: 32.54%;"></div>
+            </div>
+        </div>
+        <p class="notice">Notice: Please try to provide your valid information</p>
+
+        <form>
+            <div class="form-group">
+                <label for="amount">Enter Amount</label>
+                <input type="number" id="amount" name="amount" placeholder="Enter amount" min="1" step="0.01" required>
+                <small>Please Enter The Amount</small>
+            </div>
+
+            <div class="form-group">
+                <label>Select Payment Method</label>
+                <div class="payment-methods">
+                    <label><input type="radio" name="payment" value="offline" required> Offline Donation</label>
+                    <label><input type="radio" name="payment" value="test" required> Test Donation</label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="name">Personal Info</label>
+                <input type="text" id="name" name="name" placeholder="Enter your name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required>
+            </div>
+
+            <div class="form-group">
+                <label>Donation Total</label>
+                <input type="text" value="$24.00" readonly>
+            </div>
+
+            <button type="submit" class="donate-btn">Donate Now</button>
+        </form>
+    </section>
+</body>
+</html>

@@ -10,26 +10,27 @@
 <body>
         <video autoplay muted loop id="myVideo">
             <source src="video/login_video.mp4" type="video/mp4">
-            Your browser does not support HTML5 video.
+            Your browser does not support <HTM></HTM>L5 video.
           </video>
         <div class="main">  	
             <input type="checkbox" id="chk">
             <div class="signup">
-                <form>
+                <form action="signup_user.php" method="post">
                     <label for="chk">Sign Up</label>
-                    <input type="text" name="txt" placeholder="User name" required="">
+                    <input type="text" name="username" placeholder="User name" required="">
                     <input type="email" name="email" placeholder="Email" required="">
-                    <input type="password" name="pswd" placeholder="Password" required="">
+                    <input type="password" name="password" placeholder="Password" required="">
+                    <input type="text" name="role" placeholder="Your role? ex: resident / admin" required="">
                     <button>Sign Up</button>
                 </form>
             </div>
             <div class="login">
-                <form>
-                    <label for="chk">Login</label>
-                    <input type="email" name="email" placeholder="Email" required="">
-                    <input type="password" name="pswd" placeholder="Password" required="">
-                    <button>Login</button>
-                </form>
+                <form action="login_user.php" method="post">
+                        <label for="chk">Login</label>
+                        <input type="email" name="email" placeholder="Email" required="">
+                        <input type="password" name="Password" placeholder="Password" required="">
+                        <button>Login</button>
+                    </form>
             </div>
         </div>
 </body>

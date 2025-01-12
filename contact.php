@@ -1,3 +1,28 @@
+<?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
+if (!isset($_SESSION['user_id'])) {
+    header("Location: login.php?error=not_logged_in");
+    exit();
+}
+
+include('config/db_connection.php');
+
+$user_id = $_SESSION['user_id'];
+$query = "SELECT name, email,phone_number FROM user WHERE user_id = ?";
+$stmt = $conn->prepare($query);
+$stmt->bind_param("i", $user_id);
+$stmt->execute();
+$result = $stmt->get_result();
+$user = $result->fetch_assoc();
+
+$name = $user['name'] ?? ''; 
+$email = $user['email'] ?? '';
+$phone_number= $user['phone_number']?? '';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,19 +37,19 @@
     </header>
 
     <div id="contact_container">
-    <form action="#" method="post">
+    <form action="contact_information.php" method="post">
             <h1>Contact Us</h1>
             <p>Please take a moment to get in touch, we will get back to you shortly.</p>
 
             <div class="column">
                 <label for="the-name">Your Name</label>
-                <input type="text" name="name" id="the-name">
+                <input type="text" name="name" id="the-name" value="<?php echo htmlspecialchars($name); ?>">
 
                 <label for="the-email">Email Address</label>
-                <input type="email" name="email" id="the-email">
+                <input type="email" name="email" id="the-email" value="<?php echo htmlspecialchars($email);?>">
 
                 <label for="the-phone">Phone Number</label>
-                <input type="tel" name="phone" id="the-phone">
+                <input type="tel" name="phone" id="the-phone" value="<?php echo htmlspecialchars($phone_number);?>">
 
                 <label for="service-request">How can we assist you?</label>
                 <select name="service-request" id="service-request">
@@ -37,7 +62,7 @@
             </div>
             <div class="column">
                 <label for="the-message">Message</label>
-                <textarea name="message" id="the-message"></textarea>
+                <textarea name="message" id="the-message" required></textarea>
                 <input type="submit" value="Send Message">
             </div>
         </form>  

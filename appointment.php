@@ -15,7 +15,7 @@
         </div>
         <div class="right-section">
             <h2>Book Appointment</h2>
-            <form>
+            <form action="process_appointment.php" method="POST">
                 <div class="form-group">
                     <label for="fullname">Enter Full Name</label>
                     <input 
@@ -39,15 +39,15 @@
                         title="Mobile Number must be a valid 11-digit number">
                 </div>
                 <div class="form-group">
-                    <label for="address">Enter Your Address</label>
+                    <label for="address">Health issue</label>
                     <input 
                         type="text" 
                         id="address" 
                         name="address" 
-                        placeholder="Enter Your Address" 
+                        placeholder="Enter health issue" 
                         required 
                         pattern=".{3,}" 
-                        title="Address must be at least 3 characters long">
+                        title="Health issue must be required">
                 </div>
                 <div class="form-group">
                     <label for="appointment-date">Appointment Date</label>

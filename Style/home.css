@@ -1,0 +1,198 @@
+
+.slideshow-container {
+  max-width: 2000px;
+  position: relative;
+  margin: auto;
+}
+
+.mySlides {
+  display: none;
+}
+
+.hero_container_1{
+    position: absolute;
+    bottom: 8px;
+    width: 20%;
+    text-align: center;
+    align-items: center;
+    height: 50vh;
+    margin-left: 20vw;
+    margin-bottom: 45vh;
+}
+.hero_container_2{
+    position: absolute;
+    bottom: 8px;
+    width: 40%;
+    text-align: center;
+    height: 60vh;
+    margin-left: 10vw;
+    margin-bottom: 50vh;
+}
+
+.text { 
+    font-size: 40px; 
+    color: #333; 
+    font-family: 'Arial', sans-serif; 
+}
+
+
+.fade {
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
+
+.button{
+    cursor: pointer;
+    font-weight: 600;
+    border-radius: 3px;
+    padding: 8px 20px;
+    border: 0;
+    background: #959697;
+    font-size: 16px;
+    border-radius: 15px;
+    text-decoration: none;
+}
+
+.button:hover {
+  background-color:#3498db;
+  color: #edeff3;
+}
+.campaign{
+    display: flex;
+    justify-content:space-between; 
+    margin-bottom: 5vh; 
+}
+.campaign_list{
+  background-color: #959697;
+  width: 100%;
+  height: 400px;
+}
+
+.container {
+  padding: 30px;
+  margin-right: 10px;
+  border-radius: 10px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+  text-align: center;
+  max-width: 300px;
+  width: 100%;
+  color: #fff; 
+}
+
+
+h1 {
+  font-size: 24px;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+p {
+  margin: 10px 0;
+  font-size: 16px;
+  color: #555;
+}
+
+.progress-bar {
+  position: relative;
+  background: #e0e0e0;
+  border-radius: 20px;
+  overflow: hidden;
+  margin: 20px 0;
+  height: 25px;
+  width: 100%;
+  padding-left: 1vw;
+}
+
+.progress {
+  background: linear-gradient(90deg, #4caf50, #81c784);
+  height: 100%;
+  width: 0%;
+  color: white;
+  line-height: 25px;
+  text-align: center;
+  transition: width 0.5s ease-in-out;
+}
+
+.donation-form {
+  margin-top: 20px;
+}
+
+.campaign_header{
+  width: 500px;
+  margin-left: 32vw;
+}
+.campaign_logo{
+  width: 50px;
+  height: auto;
+  padding-left: 13vw;
+  padding-top: 2vh;
+}
+.campaign_text{
+  font-family: 'Georgia', serif;
+  font-size: 2.5rem; 
+  color: #2c3e50;   
+  background: linear-gradient(90deg, #3498db, #9b59b6); 
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-transform: capitalize; 
+  letter-spacing: 2px; 
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); 
+  
+}
+.food_customization{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  margin-bottom: 10px;
+
+}
+.food_customization_left{
+  width: 45vw;
+  height: 350px;
+  background-color: #4caf50;
+}
+.food_customization_right{
+  width: 45vw;
+  height: 200px;
+  margin-top: 10vh;
+}
+.food_logo{
+  width: 50px;
+  height: auto;
+  padding-left: 18vw;
+  padding-top: 2vh;
+}
+.food_text {
+  font-family: 'Georgia', serif;
+  font-size: 2.5rem; 
+  color: #2c3e50; 
+  text-align: center; 
+  margin: 20px auto; 
+  background: linear-gradient(90deg, #3498db, #9b59b6); 
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-transform: capitalize; 
+  letter-spacing: 2px; 
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); 
+  padding: 10px;
+}
+.button_food_customize {
+  background-color: #007BFF;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-left: 15vw;
+  text-decoration: none;
+  transition: background-color 0.3s ease-in-out;
+}
+.button_food_customize:hover {
+  background-color: #0056b3;
+}

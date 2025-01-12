@@ -1,0 +1,72 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+header, footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+}
+
+footer {
+    margin-top: 30px;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    font-size: 2em;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.health-info-table table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 2px solid #333; 
+}
+
+.health-info-table th, .health-info-table td {
+    padding: 15px;
+    text-align: left;
+    border: 1px solid #ddd; 
+}
+
+.health-info-table th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+
+.health-info-table td {
+    background-color: #fafafa;
+}
+
+.health-info-table td ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.health-info-table td ul li {
+    margin-bottom: 5px;
+}
+
+.health-info-section {
+    margin-bottom: 20px;
+}
+
+@media (max-width: 768px) {
+    .container {
+        width: 95%;
+    }
+}

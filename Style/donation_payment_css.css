@@ -1,0 +1,122 @@
+/* General Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f8f8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.donation-form {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    width: 400px;
+    box-sizing: border-box;
+}
+
+.progress-section {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.progress-section p {
+    font-size: 1rem;
+    margin: 0.5rem 0;
+    color: #555;
+}
+
+.goal-amount {
+    color: #007BFF;
+    font-weight: bold;
+}
+
+.raised-amount {
+    color: #28a745;
+    font-weight: bold;
+}
+
+.progress-bar {
+    background-color: #e0e0e0;
+    border-radius: 5px;
+    height: 10px;
+    overflow: hidden;
+    position: relative;
+    margin-top: 0.5rem;
+}
+
+.progress {
+    background-color: #28a745;
+    height: 100%;
+    border-radius: 5px;
+}
+
+.notice {
+    font-size: 0.9rem;
+    color: #007BFF;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    color: #333;
+}
+
+.form-group input[type="number"],
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[readonly] {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 1rem;
+}
+
+.payment-methods {
+    display: flex;
+    justify-content: space-around;
+}
+
+.payment-methods label {
+    font-size: 0.9rem;
+    color: #333;
+    cursor: pointer;
+}
+
+.donate-btn {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 0.75rem;
+    font-size: 1rem;
+    cursor: pointer;
+    font-weight: bold;
+    text-align: center;
+}
+
+.donate-btn:hover {
+    background-color: #0056b3;
+}
+.donate-btn:active{
+    background-color: rgb(2, 239, 42);
+}

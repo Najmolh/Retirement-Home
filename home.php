@@ -88,7 +88,7 @@
             <div class="food_header">
                 <img src="image/save.png" class="food_logo">
                 <h1 class="food_text">Customized Meal Plans for Every Resident</h1>
-                <form action="food_customize.php" method="get">
+                <form action="customize.php" method="get">
                     <button class="button_food_customize" type="submit">Click to Customize</button>
                 </form>
             </div>

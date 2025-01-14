@@ -7,9 +7,9 @@ body {
     animation: gradientBackground 12s ease infinite;
     color: #333;
     overflow-x: hidden; /* Prevent horizontal scroll */
-}
-
-@keyframes gradientBackground {
+  }
+  
+  @keyframes gradientBackground {
     0% {
         background-position: 0% 50%;
     }
@@ -19,26 +19,37 @@ body {
     100% {
         background-position: 0% 50%;
     }
-}
-
-.main-banner {
+  }
+  
+  .main-banner {
     text-align: center;
-    padding: 50px;
-    background: linear-gradient(135deg, #e3f2fd, #bbdefb);
-    border-radius: 15px;
-    max-width: 900px;
-    margin: 30px auto;
-}
-
-.main-banner h1 {
-    font-size: 36px;
-    color: #1e3a8a;
-    font-weight: bold;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-}
-
-
-.customization-plan {
+    padding: 60px 20px; 
+    background: linear-gradient(135deg, #bbdefb, #90caf9); 
+    border-radius: 20px; 
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1); 
+    max-width: 850px; 
+    margin: 40px auto; 
+    border: 2px solid #e3f2fd; 
+    transition: transform 0.3s ease, box-shadow 0.3s ease; 
+  }
+  
+  .main-banner:hover {
+    transform: scale(1.02); 
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
+  }
+  
+  .main-banner h1 {
+    font-size: 38px; 
+    color: #0d47a1;
+    font-weight: 700; 
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; 
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1); 
+    margin: 0; 
+  }
+  
+  
+  
+  .customization-plan {
     background: linear-gradient(135deg, #f0f9ff, #cbebff);
     width: 90%;
     max-width: 600px;
@@ -47,59 +58,84 @@ body {
     margin: 40px auto;
     border-radius: 12px;
     box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
-}
-
-.customization-plan h2 {
+  }
+  
+  .customization-plan h2 {
     font-size: 24px;
     font-weight: 700;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     color: #4a4a4a;
     margin-bottom: 20px;
-}
-
-.customization-plan p {
+  }
+  
+  .customization-plan p {
     font-size: 16px;
     color: #555;
     line-height: 1.6;
     margin-bottom: 15px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-}
-
-.form-group {
+  }
+  
+  .form-group {
     margin-bottom: 20px;
-}
-
-.form-group label {
-    font-size: 18px;
-    font-weight: normal;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    display: block;
-    margin-bottom: 10px;
-    color: #1e3a8a;
-}
-
-.checkbox-group {
-    display: flex;
-    justify-content: space-between;
-    gap: 10px;
-    align-items: center;
-}
-
-input[type="radio"] {
-    margin-right: 10px;
-}
-
-button {
-    background-color: #3498db;
-    color: white;
-    font-size: 18px;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+  }
+  
+  .customization-plan {
+    max-width: 500px; 
+    margin: 50px auto; 
+    padding: 30px; 
+    background-color: #fefefe;  
+    border: 1px solid #ddd; 
+    border-radius: 10px; 
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
+    font-family: "Arial", sans-serif; 
+    text-align: center; 
+  }
+  
+  .customization-plan h2 {
+    font-size: 24px; 
+    color: #1e88e5; 
+    margin-bottom: 10px; 
+  }
+  
+  .customization-plan p {
+    font-size: 14px; 
+    color: #555; 
+    margin-bottom: 20px; 
+  }
+  
+  .customization-plan label {
+    display: block; 
+    text-align: left; 
+    font-size: 14px; 
+    color: #333; 
+    margin-bottom: 5px; 
+  }
+  
+  .customization-plan select {
+    width: 100%; 
+    padding: 10px; 
+    margin-bottom: 15px; 
+    border: 1px solid #ccc; 
+    border-radius: 5px; 
+    background-color: #fafafa;  
+    font-size: 14px; 
+    color: #333; 
+  }
+  
+  .customization-plan button {
     width: 100%;
-}
-
-button:hover {
-    background-color: #2980b9;
-}
+    padding: 12px; 
+    background-color: #1e88e5; 
+    color: #fff;
+    font-size: 16px; 
+    border: none; 
+    border-radius: 5px; 
+    cursor: pointer; 
+    transition: background-color 0.3s ease; 
+  }
+  
+  .customization-plan button:hover {
+    background-color: #1565c0; 
+  }
+  

@@ -168,34 +168,93 @@
   </div>
 
   <script>
-    let selectedPrice = 0; // Store the selected price
+let selectedPrice = 0; // Store the selected price
 
-    // Open the payment modal and show selected price
-    function openPaymentModal(price) {
-      selectedPrice = price; // Store the price
-      document.getElementById('payment-modal').style.display = "block";
-      document.getElementById('amount').value = selectedPrice; // Show price in the payment form
-    }
+// Open the payment modal and show selected price
+function openPaymentModal(price) {
+  selectedPrice = price; // Store the price
+  document.getElementById("payment-modal").style.display = "block";
+  document.getElementById("amount").value = selectedPrice; // Show price in the payment form
+}
 
-    // Close the payment modal
-    function closePaymentModal() {
-      document.getElementById('payment-modal').style.display = "none";
-    }
+// Close the payment modal
+function closePaymentModal() {
+  document.getElementById("payment-modal").style.display = "none";
+  document.getElementById("payment-form").classList.add("hidden");
+  document.getElementById("otp-section").classList.add("hidden");
+  document.getElementById("confirmation-message").classList.add("hidden");
+}
 
-    // Show the payment form based on selected method
-    function showPaymentForm(method) {
-      document.getElementById('payment-form').classList.remove('hidden');
-      document.getElementById('confirmation-message').classList.add('hidden');
-      // Optionally, you can display the selected method
-      alert('Selected payment method: ' + method);
-    }
+// Show the payment form based on the selected method
+function showPaymentForm(method) {
+  document.getElementById("payment-form").classList.remove("hidden");
+  document.getElementById("otp-section").classList.add("hidden");
+  document.getElementById("confirmation-message").classList.add("hidden");
+  alert("Selected payment method: " + method); // Optional
+}
 
-    // Confirm payment and show success message
-    function confirmPayment() {
-      // Here you can add logic to handle the payment process (e.g., API call)
-      document.getElementById('payment-form').classList.add('hidden');
-      document.getElementById('confirmation-message').classList.remove('hidden');
-    }
+// Send OTP to the user's phone
+function confirmPayment() {
+  const phoneNumber = document.getElementById("phone-number").value;
+
+  if (!phoneNumber) {
+    alert("Please enter your phone number.");
+    return;
+  }
+
+  // Send OTP request to the server
+  fetch("send_otp.php", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded",
+    },
+    body: `phone_number=${encodeURIComponent(phoneNumber)}`,
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      if (data.success) {
+        alert("OTP sent to your phone. Please check your messages.");
+        document.getElementById("otp-section").classList.remove("hidden");
+      } else {
+        alert("Failed to send OTP: " + data.message);
+      }
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+    });
+}
+
+// Verify the OTP entered by the user
+function verifyOtp() {
+  const otp = document.getElementById("otp").value;
+
+  if (!otp) {
+    alert("Please enter the OTP.");
+    return;
+  }
+
+  // Verify OTP with the server
+  fetch("verify_otp.php", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded",
+    },
+    body: `otp=${encodeURIComponent(otp)}`,
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      if (data.success) {
+        alert("OTP verified successfully. Payment process completed!");
+        document.getElementById("confirmation-message").classList.remove("hidden");
+        document.getElementById("otp-section").classList.add("hidden");
+      } else {
+        alert("Invalid OTP. Please try again.");
+      }
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+    });
+}
   </script>
 </body>
 </html>

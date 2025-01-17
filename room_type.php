@@ -135,7 +135,8 @@
     <p>Price: $1500/month</p>
     <!-- Start Month Option -->
     <label for="start-month">Start Month:</label>
-    <select class="start-month" id="start-month" name="start-month">
+    <select class="start-month" id="start-month" name="start-month" class="start-month">
+        <option value="" disabled selected>Select</option>
         <option value="January">January</option>
         <option value="February">February</option>
         <option value="March">March</option>
@@ -160,12 +161,13 @@
     <!-- Hidden Form for Booking -->
     <form action="insert_book_room.php" method="POST" class="booking-form" id="bookingForm">
                 <input type="hidden" name="room_type" value="Single Room">
-                <input type="hidden" name="start_month" id="start-month-hidden">
-                <input type="hidden" name="duration" id="duration-hidden">
+                <input type="hidden" name="start_month" class="start-month-hidden" id="start-month-hidden">
+                <input type="hidden" name="duration" class="duration-hidden" id="duration-hidden">
                 <input type="hidden" name="payment_method" id="payment-method-hidden">
+                <input type="hidden" name="total-price" class="total-price-hidden" id="total-price-hidden">
 
                 <button type="submit" class="book-room" onclick="openPaymentModal(event)">Book</button>
-            </form>
+        </form>
 </div>
         <!-- Standard Room -->
         <div class="room">
@@ -174,7 +176,8 @@
             <p>Price: $3000/month</p>
 
             <label for="start-month">Start Month:</label>
-            <select id="start-month" class="start-month">
+            <select class="start-month" id="start-month" name="start-month" class="start-month">
+                <option value="" disabled selected>Select</option>
                 <option value="January">January</option>
                 <option value="February">February</option>
                 <option value="March">March</option>
@@ -189,11 +192,21 @@
                 <option value="December">December</option>
             </select>
 
-            <label for="duration">Duration (months):</label>
+            <!-- Duration -->
+            <label for="duration" id="duration">Duration (months):</label>
             <input type="number" class="duration" value="1" min="1" onchange="calculateTotalPrice(this, 3000)">
 
-            <p>Total Price: <span class="total-price">$3000</span></p>
-            <button class="book-room" onclick="bookRoom(this.closest('.room'))">Book</button>
+            <!-- Total Price -->
+            <p>Total Price: <span class="total-price"> $3000</span></p>
+            <form action="insert_book_room.php" method="POST" class="booking-form" id="bookingForm">
+                <input type="hidden" name="room_type" value="Standard Room">
+                <input type="hidden" name="start_month" class="start-month-hidden" id="start-month-hidden">
+                <input type="hidden" name="duration" class="duration-hidden" id="duration-hidden">
+                <input type="hidden" name="payment_method" id="payment-method-hidden">
+                <input type="hidden" name="total-price" class="total-price-hidden" id="total-price-hidden">
+
+                <button type="submit" class="book-room" onclick="openPaymentModal(event)">Book</button>
+            </form>
         </div>
 
         <!-- Premium Room -->
@@ -203,7 +216,8 @@
             <p>Price: $6000/month</p>
 
             <label for="start-month">Start Month:</label>
-            <select id="start-month" class="start-month">
+            <select class="start-month" id="start-month" name="start-month" class="start-month">
+                <option value="" disabled selected>Select</option>
                 <option value="January">January</option>
                 <option value="February">February</option>
                 <option value="March">March</option>
@@ -218,11 +232,19 @@
                 <option value="December">December</option>
             </select>
 
-            <label for="duration">Duration (months):</label>
+            <label for="duration" id="duration">Duration (months):</label>
             <input type="number" class="duration" value="1" min="1" onchange="calculateTotalPrice(this, 6000)">
 
             <p>Total Price: <span class="total-price">$6000</span></p>
-            <button class="book-room" onclick="bookRoom(this.closest('.room'))">Book</button>
+            <form action="insert_book_room.php" method="POST" class="booking-form" id="bookingForm">
+                <input type="hidden" name="room_type" value="Premium Room">
+                <input type="hidden" name="start_month" class="start-month-hidden" id="start-month-hidden">
+                <input type="hidden" name="duration" class="duration-hidden" id="duration-hidden">
+                <input type="hidden" name="payment_method" id="payment-method-hidden">
+                <input type="hidden" name="total-price" class="total-price-hidden" id="total-price-hidden">
+
+                <button type="submit" class="book-room" onclick="openPaymentModal(event)">Book</button>
+            </form>
         </div>
 
         <!-- Double Room -->
@@ -232,7 +254,8 @@
             <p>Price: $4500/month</p>
 
             <label for="start-month">Start Month:</label>
-            <select id="start-month" class="start-month">
+            <select class="start-month" id="start-month" name="start-month" class="start-month">
+                <option value="" disabled selected>Select</option>
                 <option value="January">January</option>
                 <option value="February">February</option>
                 <option value="March">March</option>
@@ -247,11 +270,19 @@
                 <option value="December">December</option>
             </select>
 
-            <label for="duration">Duration (months):</label>
+            <label for="duration" id="duration">Duration (months):</label>
             <input type="number" class="duration" value="1" min="1" onchange="calculateTotalPrice(this, 4500)">
 
             <p>Total Price: <span class="total-price">$4500</span></p>
-            <button class="book-room" onclick="bookRoom(this.closest('.room'))">Book</button>
+            <form action="insert_book_room.php" method="POST" class="booking-form" id="bookingForm">
+                <input type="hidden" name="room_type" value="Double Room">
+                <input type="hidden" name="start_month" class="start-month-hidden" id="start-month-hidden">
+                <input type="hidden" name="duration" class="duration-hidden" id="duration-hidden">
+                <input type="hidden" name="payment_method" id="payment-method-hidden">
+                <input type="hidden" name="total-price" class="total-price-hidden" id="total-price-hidden">
+
+                <button type="submit" class="book-room" onclick="openPaymentModal(event)">Book</button>
+        </form>
         </div>
 
         <!-- Suite Room -->
@@ -261,7 +292,8 @@
             <p>Price: $3600/month</p>
 
             <label for="start-month">Start Month:</label>
-            <select id="start-month" class="start-month">
+            <select class="start-month" id="start-month" name="start-month" class="start-month">
+                <option option value="" disabled selected>Select</option>
                 <option value="January">January</option>
                 <option value="February">February</option>
                 <option value="March">March</option>
@@ -276,11 +308,19 @@
                 <option value="December">December</option>
             </select>
 
-            <label for="duration">Duration (months):</label>
+            <label for="duration" id="duration">Duration (months):</label>
             <input type="number" class="duration" value="1" min="1" onchange="calculateTotalPrice(this, 3600)">
 
             <p>Total Price: <span class="total-price">$3600</span></p>
-            <button class="book-room" onclick="bookRoom(this.closest('.room'))">Book</button>
+            <form action="insert_book_room.php" method="POST" class="booking-form" id="bookingForm">
+                <input type="hidden" name="room_type" value="Suit Room">
+                <input type="hidden" name="start_month" class="start-month-hidden" id="start-month-hidden">
+                <input type="hidden" name="duration" class="duration-hidden" id="duration-hidden">
+                <input type="hidden" name="payment_method" id="payment-method-hidden">
+                <input type="hidden" name="total-price" class="total-price-hidden" id="total-price-hidden">
+
+                <button type="submit" class="book-room" onclick="openPaymentModal(event)">Book</button>
+        </form>
         </div>
     </div>
 </div>
@@ -350,20 +390,46 @@
 
 
 <script>
-  // Function to update the hidden input values dynamically
-  function updateTotalPrice() {
-        var startMonth = document.getElementById('start-month').value;
-        var duration = document.getElementById('duration').value;
+    document.addEventListener("DOMContentLoaded", () => {
+    // Loop through all rooms
+    const rooms = document.querySelectorAll(".room");
 
-        // Update hidden input values
-        document.getElementById('start-month-input').value = startMonth;
-        document.getElementById('duration-input').value = duration;
+    rooms.forEach((room) => {
+        const startMonthDropdown = room.querySelector(".start-month");
+        const hiddenStartMonthInput = room.querySelector(".start-month-hidden");
 
-        // Update total price dynamically based on duration
-        var pricePerMonth = 1500;
-        var totalPrice = pricePerMonth * duration;
-        document.querySelector('.total-price').textContent = "$" + totalPrice;
-    }
+        const durationInput = room.querySelector(".duration");
+        const hiddenDurationInput = room.querySelector(".duration-hidden");
+
+        const RoomTotalPrice = room.querySelector(".total-price");
+        const hiddenRoomTotalPriceInput = room.querySelector(".total-price-hidden");
+
+        // Get the monthly price from the displayed text
+        const monthlyPriceText = room.querySelector("p").textContent;
+        const monthlyPrice = parseInt(monthlyPriceText.match(/\d+/)[0], 10); // Extract price from "$3600/month"
+
+        // Update start month hidden input when dropdown changes
+        startMonthDropdown.addEventListener("change", (event) => {
+            const selectedMonth = event.target.value;
+            hiddenStartMonthInput.value = selectedMonth;
+        });
+
+        // Update duration hidden input and calculate total price
+        durationInput.addEventListener("input", () => {
+            const duration = parseInt(durationInput.value, 10) || 1; // Default to 1 if invalid
+            const totalPrice = duration * monthlyPrice;
+
+            // Update displayed total price
+            RoomTotalPrice.textContent = `$${totalPrice}`;
+
+            // Update hidden inputs
+            hiddenDurationInput.value = duration;
+            hiddenRoomTotalPriceInput.value = totalPrice;
+        });
+    });
+});
+
+
 
     // Run updateTotalPrice function when the page loads to set the initial values
     window.onload = updateTotalPrice;

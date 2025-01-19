@@ -1,4 +1,4 @@
-<?php 
+<?php
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
@@ -19,23 +19,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $total_price = $_POST['total-price'] ?? 0;
 
     // Display the values for debugging or confirmation
-    // echo "<h2>Booking Details</h2>";
-    // echo "Room Type: " . $room_type . "<br>";
-    // echo "Start Month: " . $start_month . "<br>";
-    // echo "Duration: " . $duration . " months<br>";
-    // echo "Payment Method: " . $payment_method . "<br>";
-    // echo "User ID: " . $user_id . "<br>";
-    // echo "total_price: " . $total_price . "<br>";
+    echo "<h2>Booking Details</h2>";
+    echo "Room Type: " . $room_type . "<br>";
+    echo "Start Month: " . $start_month . "<br>";
+    echo "Duration: " . $duration . " months<br>";
+    echo "Payment Method: " . $payment_method . "<br>";
+    echo "User ID: " . $user_id . "<br>";
+    echo "total_price: " . $total_price . "<br>";
 
     // Insert the data into the database
     $sql = "INSERT INTO room_booking (room_type, start_month, duration, payment_method, user_id,total_price)
             VALUES (?, ?, ?, ?, ?,?)";
 
     if ($stmt = $conn->prepare($sql)) {
-        $stmt->bind_param("ssisis", $room_type, $start_month, $duration, $payment_method, $user_id,$total_price);
-        
+        $stmt->bind_param("ssisis", $room_type, $start_month, $duration, $payment_method, $user_id, $total_price);
+
         if ($stmt->execute()) {
-            header("Location: room_type.php");
+            header("Location: success.php?message=Successfully booked a room");
             exit();
         } else {
             echo "Error: " . $stmt->error;
@@ -48,4 +48,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $conn->close();
 }
-?>

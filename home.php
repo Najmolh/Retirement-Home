@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
     <link rel="stylesheet" href="Style/home.css">
+    <link rel="stylesheet" href="Style/review_load.css">
     <link rel="stylesheet" href="Style/donation_main_style.css">
 </head>
 <body>
@@ -94,6 +95,59 @@
             </div>
         </div>
     </div>
+
+    <div id="reviews-section">
+    <h2 class="campaign_text">User Reviews</h2>
+    <div id="reviews-wrapper">
+        <div id="reviews" class="loading">Loading reviews...</div>
+    </div>
+</div>
+
+
+
+
+    <script>
+    // Fetch user reviews and display them
+fetch('review_load.php') // Replace with your PHP file path
+    .then(response => response.json())
+    .then(data => {
+        const reviewsDiv = document.getElementById('reviews');
+        reviewsDiv.classList.remove('loading'); // Remove the loading message
+
+        if (data.length === 0) {
+            reviewsDiv.innerHTML = '<p>No reviews available yet!</p>';
+            return;
+        }
+
+        reviewsDiv.innerHTML = ''; // Clear the "Loading reviews..." message
+
+        // Populate reviews
+        data.forEach(review => {
+            const reviewCard = document.createElement('div');
+            reviewCard.className = 'review-card';
+            reviewCard.innerHTML = `
+                <h3>${review.name}</h3>
+                <p>${review.comments}</p>
+                <p class="rating">Rating: ${'⭐'.repeat(review.rating)}</p>
+            `;
+            reviewsDiv.appendChild(reviewCard);
+        });
+
+        // Clone reviews for seamless looping
+        const clone = reviewsDiv.cloneNode(true);
+        reviewsDiv.appendChild(...clone.childNodes);
+    })
+    .catch(error => {
+        console.error('Error fetching reviews:', error);
+        const reviewsDiv = document.getElementById('reviews');
+        reviewsDiv.classList.remove('loading');
+        reviewsDiv.innerHTML = '<p>Failed to load reviews. Please try again later.</p>';
+    });
+
+
+
+</script>
+
 
     <footer>
         <?php include('Template/footer.php'); ?>

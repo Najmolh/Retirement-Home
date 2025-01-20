@@ -1,72 +1,63 @@
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    margin: 0;
-    padding: 0;
-}
-
-header, footer {
-    background-color: #333;
-    color: white;
-    text-align: center;
-    padding: 20px 0;
-}
-
-footer {
-    margin-top: 30px;
-}
-
 .container {
-    width: 80%;
-    margin: 0 auto;
+    max-width: 850px;
+    margin: 20px auto;
     padding: 20px;
-    background-color: #fff;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background: linear-gradient(to bottom right, #eaf6fd, #d4ebfa);
+    border: 2px solid #3498db;
+    border-radius: 15px;
+    font-family: 'Verdana', sans-serif;
 }
 
-h1 {
+.container h1 {
     text-align: center;
-    font-size: 2em;
-    color: #333;
+    font-size: 2.2rem;
+    color: #3498db;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
     margin-bottom: 20px;
 }
 
 .health-info-table table {
     width: 100%;
     border-collapse: collapse;
-    border: 2px solid #333; 
+    margin-top: 15px;
+    font-size: 1rem;
 }
 
 .health-info-table th, .health-info-table td {
-    padding: 15px;
+    padding: 12px 15px;
+    border: 1px solid #a8d8f0;
     text-align: left;
-    border: 1px solid #ddd; 
+    border-radius: 8px;
 }
 
 .health-info-table th {
-    background-color: #f2f2f2;
+    background-color: #3498db;
+    color: white;
     font-weight: bold;
+    text-transform: capitalize;
 }
 
 .health-info-table td {
-    background-color: #fafafa;
+    background-color: #f4f9fd;
+    color: #2c3e50;
 }
 
-.health-info-table td ul {
-    list-style-type: none;
-    padding-left: 0;
+.health-info-table tr:nth-child(even) td {
+    background-color: #e8f4fb;
+}
+
+.health-info-table ul {
+    padding-left: 25px;
+    list-style: square;
 }
 
 .health-info-table td ul li {
     margin-bottom: 5px;
+    color: #34495e;
 }
 
-.health-info-section {
-    margin-bottom: 20px;
-}
-
-@media (max-width: 768px) {
-    .container {
-        width: 95%;
-    }
+/* Add subtle hover effect */
+.health-info-table tr:hover td {
+    background-color: #d4ebfa;
+    transition: background-color 0.3s ease-in-out;
 }

@@ -1,0 +1,113 @@
+/* Reviews Section */
+#reviews-section {
+    padding: 20px;
+    background-color: #e8e8f5;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 20px 0;
+    max-width: 100%;
+    margin: auto;
+    text-align: center;
+}
+
+#reviews-section h2 {
+    font-size: 2rem;
+    font-family: 'Arial', sans-serif;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Wrapper for scrolling */
+#reviews-wrapper {
+    overflow: hidden;
+    width: 100%;
+    position: relative;
+}
+
+/* Reviews Container (circular scrolling) */
+#reviews {
+    display: flex;
+    gap: 30px;
+    animation: scrollCircular 20s linear infinite;
+}
+
+/* Individual Review Cards */
+.review-card {
+    background-color: white;
+    border-radius: 15px;
+    padding: 20px;
+    min-width: 250px;
+    max-width: 300px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    text-align: left;
+    font-family: 'Arial', sans-serif;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.review-card:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
+}
+
+.review-card h3 {
+    font-size: 1.4rem;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.review-card p {
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.6;
+}
+
+.review-card .rating {
+    color: #FFD700; /* Gold color for stars */
+    font-size: 1.2rem;
+}
+
+/* Each card gets unique background and style */
+.review-card:nth-child(1) {
+    background-color: #c18887; 
+    color: #fff; 
+}
+
+.review-card:nth-child(2) {
+    background-color: #7581b3;  
+    color: #fff; 
+}
+
+.review-card:nth-child(3) {
+    background-color: #aea280; 
+    color: #fff; 
+}
+
+.review-card:nth-child(4) {
+    background-color: #6da38b; 
+    color: #fff; 
+}
+
+.review-card:nth-child(5) {
+    background-color: #ad8d72; 
+    color: #fff; 
+}
+.review-card:nth-child(6) {
+    background-color: #6da38b; 
+    color: #fff; 
+}
+.review-card:nth-child(7) {
+    background-color: #7581b3;    
+    color: #fff; 
+}
+
+
+/* Circular Scrolling Animation */
+@keyframes scrollCircular {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-30%);
+    }
+}
+

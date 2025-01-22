@@ -20,12 +20,12 @@ if (session_status() === PHP_SESSION_NONE) {
                 <ul class="nav-links">
                     <li><a href="home.php">Home</a></li>
                     <li class="dropdown">
-                        <a href="#">Rooms</a>
-                        <div class="mega-menu">
+                        <a href="room_type.php">Rooms</a>
+                        <!-- <div class="mega-menu">
                             <a href="room_type.php">Room Booking</a>
-                            <!-- <a href="room_booking.php">Room Booking</a> -->
+                            <a href="room_booking.php">Room Booking</a>
                             <a href="availability.php">Availability</a>
-                        </div>
+                        </div> -->
                     </li>
                     <li class="dropdown">
                         <a href="#">Medical History</a>
@@ -51,6 +51,7 @@ if (session_status() === PHP_SESSION_NONE) {
                             <a href="#">Hello, <?php echo htmlspecialchars($_SESSION['name']); ?></a>
                             <div class="mega-menu">
                                 <a href="update_info.php">Profile</a>
+                                <a href="appoinment_success.php">Appointment Status</a>
                                 <a href="logout.php">Logout</a>
                             </div>
                         </li>

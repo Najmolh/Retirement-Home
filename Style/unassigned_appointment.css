@@ -1,0 +1,123 @@
+/* General page layout */
+body {
+    display: flex;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* Sidebar styling */
+.sidebar {
+    width: 220px; /* Fixed width for the sidebar */
+    background-color: #2c3e50; /* Dark blue-gray background */
+    color: #fff;
+    min-height: 100vh; /* Full viewport height */
+    padding: 20px 0;
+    position: fixed; /* Fixed position to stay on the left */
+}
+
+.sidebar nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar nav ul li {
+    margin: 10px 0;
+}
+
+.sidebar nav ul li a {
+    text-decoration: none;
+    color: #fff;
+    display: block;
+    padding: 10px 20px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.sidebar nav ul li a:hover {
+    background-color: #34495e; /* Slightly lighter background on hover */
+}
+
+/* Main content styling */
+main {
+    margin-left: 220px; /* Match the sidebar width */
+    padding: 20px;
+    background-color: #f9f9f9;
+    flex: 1; /* Take the remaining space */
+    min-height: 100vh; /* Ensure it stretches the full height */
+    box-sizing: border-box;
+    overflow-x: auto;
+}
+
+/* Heading style */
+main h1 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #4caf50;
+    padding-bottom: 10px;
+}
+
+/* Table styling */
+main table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+main table thead th {
+    background-color: #4caf50;
+    color: #fff;
+    text-align: left;
+    padding: 10px;
+    font-size: 16px;
+    border-bottom: 2px solid #ddd;
+}
+
+main table tbody td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    color: #555;
+}
+
+main table tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+/* Input and button styling */
+main input[type="text"],
+main input[type="time"] {
+    width: 90%;
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    outline: none;
+}
+
+main input[type="text"]:focus,
+main input[type="time"]:focus {
+    border-color: #4caf50;
+}
+
+main button[type="submit"] {
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    font-size: 14px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+main button[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+/* No appointments message */
+main p {
+    font-size: 16px;
+    color: #777;
+    margin-top: 20px;
+}

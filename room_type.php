@@ -23,7 +23,6 @@
             /* Enable vertical scrolling */
         }
 
-
         /* Modal Content */
         .modal-content {
             background: #fff;
@@ -169,7 +168,6 @@
                     <input type="hidden" name="duration" class="duration-hidden" id="duration-hidden">
                     <input type="hidden" name="payment_method" id="payment-method-hidden">
                     <input type="hidden" name="total-price" class="total-price-hidden" id="total-price-hidden">
-
                     <!-- <button type="submit" class="book-room" onclick="openPaymentModal(event)">Book</button> -->
                 </form>
             </div>
@@ -395,15 +393,11 @@
                 </div>
             </div>
 
-            <button class="btn" onclick="confirmPayment()">Confirm Payment</button>
+            <button class="btn" onclick="confirmPayment()" >Confirm Payment</button>
         </div>
     </div>
 
 
-    <!-- OTP Modal -->
-    <!-- **************************** -->
-    <!-- otp verification successful hole success.php page ta show kore dis -->
-    <!-- **************************** -->
     <div id="otpModal" class="modal" style="display: none;">
         <div class="modal-content">
             <span class="close" onclick="closeOtpModal()">&times;</span>
@@ -479,11 +473,6 @@
         });
 
 
-
-        // Run updateTotalPrice function when the page loads to set the initial values
-        // window.onload = updateTotalPrice;
-
-
         // // Open the modal
         function openPaymentModal(evt) {
             formEl = evt.target.closest('.room').querySelector('.booking-form');
@@ -500,12 +489,6 @@
         function selectPaymentMethod(method) {
             alert('You selected ' + method + ' as your payment method.');
         }
-
-        // Confirm payment
-        // function confirmPayment() {
-        //     alert('Payment confirmed! Redirecting to a confirmation page...');
-        //     window.location.href = "confirmation.php"; // Redirect to confirmation page
-        // }
 
         // select payment method and open particular form 
         function selectPaymentMethod(method) {

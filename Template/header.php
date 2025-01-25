@@ -52,6 +52,7 @@ if (session_status() === PHP_SESSION_NONE) {
                             <div class="mega-menu">
                                 <a href="update_info.php">Profile</a>
                                 <a href="appoinment_success.php">Appointment Status</a>
+                                <a href="room_booking_status.php">Room Status</a>
                                 <a href="logout.php">Logout</a>
                             </div>
                         </li>

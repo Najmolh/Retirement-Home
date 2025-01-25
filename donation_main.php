@@ -34,7 +34,7 @@ $conn->close();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Donation Page</title>
     <link rel="stylesheet" href="Style/donation_main_style.css">
-    <link rel="stylesheet" href="Style/pyment_modal.css">
+    <link rel="stylesheet" href="Style/payment_modal.css">
     <script src="your-javascript-file.js" defer></script> 
     
 

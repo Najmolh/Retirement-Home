@@ -1,17 +1,12 @@
 <?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+// include('room_type.php');
+
+$isLoggedIn = isset($_SESSION['user_id']);
 include('config/db_connection.php');
 
-// $donation_type = 'Nutritional Support Fund';
-// $sql = "SELECT amount FROM donation WHERE donation_type = ?";
-// $stmt = $conn->prepare($sql);
-// $stmt->bind_param("s", $donation_type);
-// $stmt->execute();
-// $result = $stmt->get_result();
-
-// $fund_raised = 0;
-// if ($row = $result->fetch_assoc()) {
-//     $fund_raised = $row['amount'];
-// }
 
 $sql = "SELECT donation_type, amount FROM donation";
 $result = $conn->query($sql);
@@ -48,42 +43,43 @@ $conn->close();
         <img class="card_img" src="image/special_need_fund.png" alt="Special Needs Funds">
         <h3>Special Need Funds</h3>
         <p>Fund raised: $<?php echo number_format($donations['Special Need Funds'] ?? 0, 2); ?></p>
-        <button class="donate-btn" onclick="openPaymentModal(event)">Donate</button>
+        <button class="donate-btn" onclick="openPaymentModal(event,'Special Need Funds')">Donate</button>
     </div>
 
     <div class="campaign-card">
         <img class="card_img" src="image/general_operating_fund.webp" alt="General Operating Funds">
         <h3>General Operating Funds</h3>
         <p>Fund raised: $<?php echo number_format($donations['General Operating Funds'] ?? 0, 2); ?></p>
-        <button class="donate-btn" onclick="openPaymentModal(event)">Donate</button>
+        <button class="donate-btn" onclick="openPaymentModal(event,'General Operating Funds')">Donate</button>
     </div>
 
     <div class="campaign-card">
         <img class="card_img" src="image/health_care.jpg" alt="Health Care Funds">
         <h3>Health Care Funds</h3>
         <p>Fund raised: $<?php echo number_format($donations['Health Care Funds'] ?? 0, 2); ?></p>
-        <button class="donate-btn" onclick="openPaymentModal(event)">Donate</button>
+        <button class="donate-btn" onclick="openPaymentModal(event,'Health Care Funds')">Donate</button>
     </div>
 
     <div class="campaign-card">
         <img src="image/elder_caring_fund.webp" alt="Elder Care Funding">
         <h3>Elder Care Funding</h3>
         <p>Fund raised: $<?php echo number_format($donations['Elder Care Funding'] ?? 0, 2); ?></p>
-        <button class="donate-btn" onclick="openPaymentModal(event)">Donate</button>
+        <button class="donate-btn" onclick="openPaymentModal(event,'Elder Care Funding')">Donate</button>
     </div>
 
     <div class="campaign-card">
         <img src="image/central_improvement_fund.jpg" alt="Capital Improvement Fund">
         <h3>Capital Improvement Fund</h3>
         <p>Fund raised: $<?php echo number_format($donations['Capital Improvement Fund'] ?? 0, 2); ?></p>
-        <button class="donate-btn" onclick="openPaymentModal(event)">Donate</button>
+        <button class="donate-btn" onclick="openPaymentModal(event,'Capital Improvement Fund')">Donate</button>
     </div>
 
     <div class="campaign-card">
         <img src="image/nutration_support.jpeg" alt="Nutritional Support Fund">
         <h3>Nutritional Support Fund</h3>
         <p>Fund raised: $<?php echo number_format($donations['Nutritional Support Fund'] ?? 0, 2); ?></p>
-        <button class="donate-btn" onclick="openPaymentModal(event)">Donate</button>
+        <!-- <button class="donate-btn" onclick="openPaymentModal(event)">Donate</button> -->
+        <button class="donate-btn" onclick="openPaymentModal(event, 'Nutritional Support Fund')">Donate</button>
     </div>
 </section>
 
@@ -113,6 +109,10 @@ $conn->close();
                 <!-- Bkash Form -->
                 <div id="bkashForm" class="payment-form" style="display: none;">
                     <h3>Bkash Payment</h3>
+                    <?php if (!$isLoggedIn): ?>
+                        <label for="user-email">Email Address:</label>
+                        <input type="email" id="user-email" name="user-email" placeholder="Enter your email" required>
+                    <?php endif; ?>
                     <label for="bkash-phone">Phone Number:</label>
                     <input type="text" id="bkash-phone" name="bkash-phone" placeholder="Enter your phone number">
                     <label for="bkash-amount-input">Enter Amount:</label>
@@ -122,6 +122,10 @@ $conn->close();
                 <!-- PayPal Form -->
                 <div id="paypalForm" class="payment-form" style="display: none;">
                     <h3>PayPal Payment</h3>
+                    <?php if (!$isLoggedIn): ?>
+                        <label for="user-email">Email Address:</label>
+                        <input type="email" id="user-email" name="user-email" placeholder="Enter your email" required>
+                    <?php endif; ?>
                     <label for="paypal-email">Email:</label>
                     <input type="email" id="paypal-email" name="paypal-email" placeholder="Enter your email">
                     <label for="paypal-amount-input">Enter Amount:</label>
@@ -131,6 +135,10 @@ $conn->close();
                 <!-- Visa Form -->
                 <div id="visaForm" class="payment-form" style="display: none;">
                     <h3>Visa Payment</h3>
+                    <?php if (!$isLoggedIn): ?>
+                        <label for="user-email">Email Address:</label>
+                        <input type="email" id="user-email" name="user-email" placeholder="Enter your email" required>
+                    <?php endif; ?>
                     <label for="visa-number">Card Number:</label>
                     <input type="text" id="visa-number" name="visa-number" placeholder="Enter your Visa card number">
                     <label for="visa-expiry">Expiry Date:</label>
@@ -152,11 +160,18 @@ $conn->close();
     <!-- <script src="payment-modal.js"></script> -->
     <script>
     // Open the modal when the "Donate" button is clicked
-    function openPaymentModal(evt) {
-        // Get the closest form or relevant element where you want to submit data later
-        formEl = evt.target.closest('.campaign-card').querySelector('.booking-form');
+    // function openPaymentModal(evt) {
+    //     // Get the closest form or relevant element where you want to submit data later
+    //     formEl = evt.target.closest('.campaign-card').querySelector('.booking-form');
+    //     document.getElementById('paymentModal').style.display = 'block'; // Show the modal
+    // }
+    let selectedDonationType = ''; // Global variable to store the selected donation type
+
+    function openPaymentModal(evt, donationType) {
+        selectedDonationType = donationType; // Store the donation type
         document.getElementById('paymentModal').style.display = 'block'; // Show the modal
     }
+
 
     // Close the modal
     function closePaymentModal() {
@@ -184,24 +199,64 @@ $conn->close();
     }
 
     // Confirm payment and process accordingly
+    // function confirmPayment() {
+    //     const bkashPhone = document.getElementById('bkash-phone');
+    //     const paypalEmail = document.getElementById('paypal-email');
+    //     const visaNumber = document.getElementById('visa-number');
+
+    //     if (bkashPhone && bkashPhone.value) {
+    //         formEl.submit(); // Submit the form if Bkash fields are filled
+    //     } else if (paypalEmail && paypalEmail.value) {
+    //         formEl.submit(); // Submit the form if PayPal fields are filled
+    //     } else if (visaNumber && visaNumber.value) {
+    //         formEl.submit(); // Submit the form if Visa fields are filled
+    //     } else {
+    //         alert('Please fill out the required fields.');
+    //     }
+
+    //     // Close modal after confirmation
+    //     closePaymentModal();
+    // }
+
     function confirmPayment() {
-        const bkashPhone = document.getElementById('bkash-phone');
-        const paypalEmail = document.getElementById('paypal-email');
-        const visaNumber = document.getElementById('visa-number');
+    const amount = document.querySelector('#bkash-amount-input, #paypal-amount-input, #visa-amount-input').value;
 
-        if (bkashPhone && bkashPhone.value) {
-            formEl.submit(); // Submit the form if Bkash fields are filled
-        } else if (paypalEmail && paypalEmail.value) {
-            formEl.submit(); // Submit the form if PayPal fields are filled
-        } else if (visaNumber && visaNumber.value) {
-            formEl.submit(); // Submit the form if Visa fields are filled
-        } else {
-            alert('Please fill out the required fields.');
-        }
-
-        // Close modal after confirmation
-        closePaymentModal();
+    if (!amount || amount <= 0) {
+        alert('Please enter a valid amount.');
+        return;
     }
+
+    console.log('Donation Type:', selectedDonationType); // Debug
+    console.log('Amount:', amount); // Debug
+
+    fetch('update_donation.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            donation_type: selectedDonationType,
+            amount: amount,
+        }),
+    })
+        .then((response) => response.json())
+        .then((data) => {
+            console.log('Server Response:', data); // Debug response
+            if (data.success) {
+                alert('Donation updated successfully!');
+                closePaymentModal();
+                location.reload();
+            } else {
+                alert('Error updating donation: ' + data.error);
+            }
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+            alert('An unexpected error occurred.');
+        });
+}
+
+
 </script>
 
 
